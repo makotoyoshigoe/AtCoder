@@ -1,17 +1,15 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
+#include<algorithm>
+using namespace std;
 
 int main(void){
-    std::string s, t, sd, td, r("no");
-    std::cin >> s >> t;
-    for(int i=0; i<t.size(); ++i){
-        for(int j=0; j<s.size(); ++j){
-            if(t[i] < s[j]){
-                std::cout << r << std::endl;
-                return 0;
-            }
-        }
-    }
-
-    // if(s[0] > t[0]) r = "yes"; 
-    // std::cout << s[0] << std::endl;
+    string s, t, r("No");
+    cin >> s >> t;
+    sort(s.begin(), s.end());
+    sort(t.begin(), t.end());
+    reverse(t.begin(), t.end());
+    if(s < t) r = "Yes";
+    cout << r << endl;
+    return 0;
 }
