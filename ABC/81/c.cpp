@@ -19,10 +19,9 @@ int main(void){
     }
     sort(b.begin(), b.end());
     int s = value.size(), r = 0;
-    for(int i=0; i<n; ++i){
-        if(s<=k) break;
+    for(int i=0; s>k; ++i){
         r += b[i];
-        if(b[i] > 0) s--;
+        s -= (b[i] > 0);
     }
     cout << r << endl;
     return 0;
