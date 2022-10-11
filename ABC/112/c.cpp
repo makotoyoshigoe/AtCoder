@@ -1,26 +1,36 @@
 #include<iostream>
 #include<cmath>
+#include<tuple>
+#include<algorithm>
+#include<vector>
 
 using namespace std;
 
 int main(void){
     int n;
+    tuple<long long, long long, long long> G = make_tuple(-1, -1, -1);
     cin >> n;
-    int x, y, h, cx = 0, cy = 0;
+    int x[n], y[n], flag = 0;
+    long long h[n];
     for(int i=0; i<n; ++i){
-        cin >> x >> y >> h;
-        cx += x;
-        cy += y;
+        cin >> x[i] >> y[i] >> h[i];
+        if(h[i] >= 1 && flag == 0){
+            G = make_tuple(x[i], y[i], h[i]);
+            flag = 1;
+        }
     }
-    if(cx >= 100) cx = 100;
-    else cx /= n;
-    if(cy >= 100) cy = 100;
-    else cy /= n;
-    // cx /= n;
-    // cy /= n;
-    // cx = ceil(cx);
-    // cy = ceil(cy);
-    int H = h + abs(x - cx) + abs(y - cy);
-    cout << cx << " " << cy << " " << H << endl;
+    for(int i=0; i<=100; ++i){
+        for(int j=0; j<=100; ++j){
+            long long V = get<2>(G) + abs(get<0>(G) - i) + abs(get<1>(G) - j); V = max(V, 0LL); bool flag = true;
+			for (int k=0; k<n; ++k) {
+				long long VV = V - abs(x[k] - i) - abs(y[k] - j); VV = max(VV, 0LL);
+				if (h[k] != VV) flag = false;
+			}
+			if (flag == true){
+                cout << i << " " << j << " " << V << endl;
+                return 0;
+            }
+        }
+    }
     return 0;
 }
