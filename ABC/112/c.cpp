@@ -24,7 +24,10 @@ int main(void){
             long long V = get<2>(G) + abs(get<0>(G) - i) + abs(get<1>(G) - j); V = max(V, 0LL); bool flag = true;
 			for (int k=0; k<n; ++k) {
 				long long VV = V - abs(x[k] - i) - abs(y[k] - j); VV = max(VV, 0LL);
-				if (h[k] != VV) flag = false;
+				if (h[k] != VV){
+                    flag = false;
+                    break;
+                }
 			}
 			if (flag == true){
                 cout << i << " " << j << " " << V << endl;
