@@ -10,22 +10,14 @@ using namespace std;
 int main(void){
     int n;
     cin >> n;
-    vector<long long> a(n, 0);
-    set<long long> b;
-    for(int i=0; i<n; ++i){
-        cin >> a[i];
-        b.insert(a[i]);
-    }
-    vector<long long> c(b.begin(), b.end());
-    vector<long long>::iterator itr;
-    sort(c.begin(), c.end());
     map<int, int> mp;
-    for(int j=0; j<c.size(); ++j){
-            itr = find(c.begin(), c.end(), c[j]);
-            mp[distance(itr, c.end()) - 1]++;
-    }
+    long long A;
     for(int i=0; i<n; ++i){
-        cout << mp[i] << endl;  
+        cin >> A;
+        ++mp[A];
     }
+
+    for(auto it=mp.rbegin(); it != mp.rend(); ++it) cout << it->second << endl;  
+    for(int i=0; i<n-mp.size(); ++i) cout << 0 << endl;
     return 0;
 }
