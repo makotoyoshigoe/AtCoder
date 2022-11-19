@@ -1,5 +1,4 @@
 #include<iostream>
-#include<string>
 using namespace std;
 
 int h, m, hm[2][2];
@@ -22,6 +21,6 @@ int main(void){
         }
         update_hm();
     }
-    cout << hm[0][0]*10+hm[1][0] << " " << hm[0][1]*10 + hm[1][1] << endl;
+    cout << hm[0][0]*10 + hm[1][0] << " " << hm[0][1]*10 + hm[1][1] << endl;
     return 0;
 }
