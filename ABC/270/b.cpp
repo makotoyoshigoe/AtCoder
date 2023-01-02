@@ -6,12 +6,21 @@ using namespace std;
 int main(void){
     int x, y, z;
     cin >> x >> y >> z;
-    if(abs(x) > abs(y) && abs(z) > abs(y)){
-        cout << -1 << endl;
-        return 0;
+    if(y < 0){
+        x = -x;
+        y = -y;
+        z = -z;
     }
-    int r = abs(x);
-    if(x > z && z < 0) r += 2*abs(z);
-    cout << r << endl;
-    return 0;
+    if(x < y){
+        cout << abs(x) << endl;
+        return 0;
+    }else{
+        if(y > z){
+            cout << abs(z)+abs(x-z) << endl;
+            return 0;
+        }else{
+            cout << -1 << endl;
+            return 0;
+        }
+    }
 }
